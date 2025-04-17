@@ -30,7 +30,7 @@ const Header = () => {
         <div className="container">
           <div className="topHeaderWrapper">
             <div className="logo">
-              <img src={logo} alt="logo"/>
+              <img src={logo} alt="logo" />
             </div>
 
             <div className="topHeaderNav">

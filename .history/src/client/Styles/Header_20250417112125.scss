@@ -37,7 +37,10 @@ a {
 
 // Header Styles
 .header {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+position: fixed;
+width: 100%;
+height: 180px;
+z-index: 80;
 }
 
 // Top Header

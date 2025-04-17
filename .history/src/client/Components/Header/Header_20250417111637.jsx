@@ -11,7 +11,7 @@ import {
   Globe,
 } from "lucide-react";
 import "../../Styles/Header.scss";
-import logo from '../../Assets/logo.webp'
+import logo from '../../'
 
 const Header = () => {
   const [language, setLanguage] = useState("en");
@@ -30,7 +30,7 @@ const Header = () => {
         <div className="container">
           <div className="topHeaderWrapper">
             <div className="logo">
-              <img src={logo} alt="logo"/>
+              <h1>TechStore</h1>
             </div>
 
             <div className="topHeaderNav">

@@ -22,7 +22,6 @@ $transitionSpeed: 0.3s;
   justify-content: space-between;
 }
 
-
 a {
   text-decoration: none;
   color: inherit;
@@ -37,7 +36,10 @@ a {
 
 // Header Styles
 .header {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  width: 100%;
+  height: 180px;
+  z-index: 80;
 }
 
 // Top Header
@@ -49,7 +51,7 @@ a {
 
 .topHeaderWrapper {
   @include flexBetween;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 10px;
@@ -57,20 +59,20 @@ a {
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
- img{
+  width: 80px;
+  height: 80px;
+  img {
     width: 100%;
     height: 100%;
- }
+  }
 }
 
 .topHeaderNav {
   @include flexBetween;
   gap: 20px;
-  
+
   @media (max-width: 992px) {
-    flex-direction: column;
+
     gap: 10px;
   }
 }
@@ -79,32 +81,32 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  
+
   span {
     font-weight: 600;
   }
-  
+
   .trendingProducts {
     display: flex;
     gap: 15px;
     overflow-x: auto;
     max-width: 300px;
-    
+
     a {
       white-space: nowrap;
       color: rgba(255, 255, 255, 0.8);
       transition: color $transitionSpeed;
-      
+
       &:hover {
         color: $white;
       }
     }
-    
+
     @media (max-width: 576px) {
       max-width: 200px;
     }
   }
-  
+
   @media (max-width: 576px) {
     display: none;
   }
@@ -114,7 +116,7 @@ a {
   display: flex;
   align-items: center;
   gap: 15px;
-  
+
   @media (max-width: 576px) {
     flex-wrap: wrap;
     justify-content: center;
@@ -127,7 +129,7 @@ a {
   gap: 5px;
   font-size: 14px;
   transition: opacity $transitionSpeed;
-  
+
   &:hover {
     opacity: 0.8;
   }
@@ -137,7 +139,7 @@ a {
   display: flex;
   align-items: center;
   gap: 5px;
-  
+
   select {
     background: transparent;
     color: $white;
@@ -146,7 +148,7 @@ a {
     font-size: 14px;
     outline: none;
     padding: 2px 5px;
-    
+
     option {
       background: $secondaryColor;
       color: $white;
@@ -164,7 +166,7 @@ a {
 .bottomHeaderWrapper {
   @include flexBetween;
   gap: 20px;
-  
+
   @media (max-width: 768px) {
     flex-wrap: wrap;
   }
@@ -182,11 +184,11 @@ a {
   cursor: pointer;
   font-weight: 600;
   transition: background-color $transitionSpeed;
-  
+
   &:hover {
     background-color: darken($primaryColor, 10%);
   }
-  
+
   @media (max-width: 768px) {
     width: 100%;
     justify-content: center;
@@ -202,17 +204,17 @@ a {
   border-radius: $borderRadius;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  
+
   ul {
     list-style: none;
-    
+
     li {
       a {
         display: block;
         padding: 10px 15px;
         color: $darkGray;
         transition: background-color $transitionSpeed;
-        
+
         &:hover {
           background-color: $lightGray;
         }
@@ -225,7 +227,7 @@ a {
   flex: 1;
   display: flex;
   position: relative;
-  
+
   @media (max-width: 768px) {
     width: 100%;
     order: 3;
@@ -239,7 +241,7 @@ a {
   border-radius: $borderRadius;
   outline: none;
   transition: border-color $transitionSpeed;
-  
+
   &:focus {
     border-color: $primaryColor;
   }
@@ -256,7 +258,7 @@ a {
   color: rgba(0, 0, 0, 0.6);
   padding: 5px;
   transition: color $transitionSpeed;
-  
+
   &:hover {
     color: $primaryColor;
   }
@@ -280,12 +282,12 @@ a {
   background-color: $lightGray;
   color: $darkGray;
   transition: background-color $transitionSpeed, color $transitionSpeed;
-  
+
   &:hover {
     background-color: $primaryColor;
     color: $white;
   }
-  
+
   .badge {
     position: absolute;
     top: -5px;
@@ -314,7 +316,7 @@ a {
   .topHeaderNav {
     width: 100%;
   }
-  
+
   .bottomHeaderWrapper {
     gap: 10px;
   }
