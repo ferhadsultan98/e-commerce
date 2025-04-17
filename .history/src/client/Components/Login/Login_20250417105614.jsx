@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "../../../server/server.jsx"; // Adjusted import path
-import "../../Styles/Login.scss";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from '../../../server/server.jsx'; // Adjusted import path
+import '../../Styles/Login.scss';
 
 const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -22,12 +19,12 @@ const Login = ({ onLogin }) => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log("User logged in successfully");
+      console.log('User logged in successfully');
       onLogin(); // Update authentication state in App.jsx
-      navigate("/home"); // Navigate to home route
+      navigate('/home'); // Navigate to home route
     } catch (error) {
       setError(error.message);
-      console.error("Login error:", error.message);
+      console.error('Login error:', error.message);
     } finally {
       setLoading(false);
     }
@@ -64,9 +61,10 @@ const Login = ({ onLogin }) => {
             />
           </div>
           <button type="submit" className="loginBtn" disabled={loading}>
-            {loading ? "Logging In..." : "Log In"}
+            {loading ? 'Logging In...' : 'Log In'}
           </button>
         </form>
+     
       </div>
     </div>
   );
