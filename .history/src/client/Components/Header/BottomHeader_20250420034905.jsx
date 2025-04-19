@@ -80,9 +80,19 @@ const BottomHeader = () => {
               {showCategories && (
                 <div className="categoryDropdown">
                   <div className="categoryLeft">
+                    <Link
+                      to="/categories"
+                      className={`categoryItem ${
+                        hoveredCategory === null ? "active" : ""
+                      }`}
+                      onMouseEnter={() => setHoveredCategory(null)}
+                    >
+                      <Monitor size={18} />
+                      <span>Bütün Kateqoriyalar</span>
+                      <ChevronRight size={16} className="arrow" />
+                    </Link>
                     {categories.map((category) => (
-                      <Link
-                        to={`/category/${category.id}`}
+                      <div
                         key={category.id}
                         className={`categoryItem ${
                           hoveredCategory === category.id ? "active" : ""
@@ -92,7 +102,7 @@ const BottomHeader = () => {
                         {category.icon}
                         <span>{category.name}</span>
                         <ChevronRight size={16} className="arrow" />
-                      </Link>
+                      </div>
                     ))}
                   </div>
                   <div className="categoryRight">
@@ -144,7 +154,12 @@ const BottomHeader = () => {
                       </div>
                     ) : (
                       <div className="subCategoryPlaceholder">
-                        Kateqoriya seçin
+                        <h3>Bütün Kateqoriyalar</h3>
+                        <p>
+                          <Link to="/categories">
+                            Bütün kateqoriyalara baxın
+                          </Link>
+                        </p>
                       </div>
                     )}
                   </div>
@@ -192,6 +207,14 @@ const BottomHeader = () => {
         <div className="mobileMenuContent">
           <div className="mobileCategoryList">
             <h3>Categories</h3>
+            <Link
+              to="/categories"
+              className="mobileCategoryItem"
+              onClick={() => handleSubCategoryClick(null)}
+            >
+              <Monitor size={18} />
+              <span>Bütün Kateqoriyalar</span>
+            </Link>
             {categories.map((category) => (
               <Link
                 to={`/category/${category.id}`}

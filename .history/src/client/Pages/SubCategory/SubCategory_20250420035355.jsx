@@ -4,7 +4,7 @@ import { ShoppingCart, Heart, Info } from "lucide-react";
 import "../../Styles/SubCategory.scss";
 import productData from "../../Pages/Products/Products.json";
 
-const SubCategory = () => {
+const SubCategoryPage = () => {
   const { categoryId, subCategoryId } = useParams();
 
   // Find the category
