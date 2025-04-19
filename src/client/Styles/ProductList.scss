@@ -1,0 +1,171 @@
+// SCSS Variables
+$primaryColor: #007bff;
+$secondaryColor: #6c757d;
+$backgroundColor: #f8f9fa;
+$textColor: #333;
+$discountColor: #dc3545;
+$borderRadius: 8px;
+$boxShadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// Base container
+.productListContainer {
+  padding: 20px 0;
+  background-color: $backgroundColor;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .pageTitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $textColor;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .noProducts {
+    text-align: center;
+    font-size: 1.2rem;
+    color: $secondaryColor;
+    padding: 20px;
+  }
+
+  .productGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .productCard {
+    background-color: #fff;
+    border-radius: $borderRadius;
+    box-shadow: $boxShadow;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .productImageWrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+
+      .productImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .discountBadge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: $discountColor;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        border-radius: 4px;
+      }
+    }
+
+    .productDetails {
+      padding: 15px;
+
+      .productName {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $textColor;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .priceWrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+
+        .currentPrice {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: $primaryColor;
+        }
+
+        .oldPrice {
+          font-size: 1rem;
+          color: $secondaryColor;
+          text-decoration: line-through;
+        }
+      }
+
+      .productActions {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+
+        .actionButton {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          border: 1px solid $secondaryColor;
+          background-color: transparent;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: $primaryColor;
+            color: #fff;
+            border-color: $primaryColor;
+
+            svg {
+              stroke: #fff;
+            }
+          }
+
+          &.wishlistButton {
+            flex: 1;
+          }
+
+          &.cartButton {
+            flex: 2;
+            background-color: $primaryColor;
+            color: #fff;
+            border-color: $primaryColor;
+
+            &:hover {
+              background-color: darken($primaryColor, 10%);
+              border-color: darken($primaryColor, 10%);
+            }
+          }
+
+          .actionText {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+.subCategoryPage {
+    backgroundColor: #f8f9fa;
+    padding: 40px 0;
+  
+    .pageContainer {
+      maxWidth: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+  
+    .pageHeader {
+      textAlign: center;
+      marginBottom: 40px;
+  
+      h1 {
+        fontSize: 32px;
+        fontWeight: 700;
+        color: #1a1a1a;
+        marginBottom: 10px;
+      }
+  
+      .categoryPath {
+        fontSize: 16px;
+        color: #6c757d;
+      }
+    }
+  
+    .subCategoryContent {
+      display: flex;
+      flexDirection: column;
+      gap: 40px;
+  
+      .descriptionSection {
+        backgroundColor: #ffffff;
+        padding: 20px;
+        borderRadius: 8px;
+        boxShadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+        h2 {
+          fontSize: 24px;
+          fontWeight: 600;
+          color: #1a1a1a;
+          marginBottom: 15px;
+        }
+  
+        p {
+          fontSize: 16px;
+          color: #4a4a4a;
+          lineHeight: 1.6;
+        }
+      }
+  
+      .productsSection {
+        h2 {
+          fontSize: 24px;
+          fontWeight: 600;
+          color: #1a1a1a;
+          marginBottom: 20px;
+        }
+  
+        .productList {
+          display: grid;
+          gridTemplateColumns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+  
+          .productCard {
+            backgroundColor: #ffffff;
+            padding: 20px;
+            borderRadius: 8px;
+            boxShadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            textAlign: center;
+            transition: transform 0.3s ease;
+  
+            &:hover {
+              transform: translateY(-5px);
+            }
+  
+            h3 {
+              fontSize: 18px;
+              fontWeight: 600;
+              color: #1a1a1a;
+              marginBottom: 10px;
+            }
+  
+            p {
+              fontSize: 14px;
+              color: #6c757d;
+              marginBottom: 15px;
+            }
+  
+            .viewProductButton {
+              display: inline-block;
+              padding: 10px 20px;
+              backgroundColor: #007bff;
+              color: #ffffff;
+              textDecoration: none;
+              borderRadius: 4px;
+              fontSize: 14px;
+              transition: backgroundColor 0.3s ease;
+  
+              &:hover {
+                backgroundColor: #0056b3;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .errorMessage {
+      textAlign: center;
+      fontSize: 18px;
+      color: #dc3545;
+      padding: 40px;
+    }
+  
+    @media (max-width: 768px) {
+      .pageHeader {
+        h1 {
+          fontSize: 28px;
+        }
+  
+        .categoryPath {
+          fontSize: 14px;
+        }
+      }
+  
+      .subCategoryContent {
+        .descriptionSection {
+          padding: 15px;
+  
+          h2 {
+            fontSize: 20px;
+          }
+  
+          p {
+            fontSize: 14px;
+          }
+        }
+  
+        .productsSection {
+          .productList {
+            gridTemplateColumns: 1fr;
+          }
+        }
+      }
+    }
+  }
