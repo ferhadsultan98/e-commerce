@@ -181,7 +181,7 @@ const BottomHeader = ({ onAddToWishlist, onAddToCart }) => {
                 <span className="actionText">Wishlist</span>
               </Link>
 
-              <Link to="/shoppingcard" className="actionButton cartButton">
+              <Link to="/" className="actionButton cartButton">
                 <ShoppingCart size={20} />
                 <span className="badge">{cartCount}</span>
                 <span className="actionText">Cart</span>

@@ -45,7 +45,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route
-          path="/"
+          path="/tech"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
@@ -110,7 +110,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           }
         />
         <Route
-          path="/shoppingcard"
+          path="/shoppingcart"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
@@ -125,7 +125,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
         <Route
           path="/"
           element={
-            isAuthenticated ? <Navigate to="/" /> : <Navigate to="/login" />
+            isAuthenticated ? <Navigate to="/tech" /> : <Navigate to="/login" />
           }
         />
       </Routes>

@@ -45,7 +45,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route
-          path="/"
+          path="/tech"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
