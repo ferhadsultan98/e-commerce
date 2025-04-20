@@ -8,8 +8,6 @@ import ProductFeatures from "./client/Pages/ProductFeatures/ProductFeatures";
 import Category from "./client/Pages/Category/Category";
 import SubCategory from "./client/Pages/SubCategory/SubCategory";
 import { useState } from "react";
-import ShoppingCard from "./client/Pages/ShoppingCard/ShoppingCard";
-import WishList from "./client/Pages/Wishlist/WishList";
 
 
 const PrivateRoute = ({ children, isAuthenticated }) => {
