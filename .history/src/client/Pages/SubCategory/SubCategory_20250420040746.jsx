@@ -1,7 +1,7 @@
 // client/Pages/SubCategory/SubCategoryPage.jsx
 import React from "react";
 import { useParams } from "react-router-dom";
-import ProductCard from "../Products/ProductCard";
+import ProductCard from "../../Components/ProductCard/ProductCard";
 import "../../Styles/SubCategory.scss";
 import productData from "../../Pages/Products/Products.json";
 

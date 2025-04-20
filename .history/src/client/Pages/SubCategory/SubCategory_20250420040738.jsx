@@ -1,11 +1,11 @@
 // client/Pages/SubCategory/SubCategoryPage.jsx
 import React from "react";
 import { useParams } from "react-router-dom";
-import ProductCard from "../Products/ProductCard";
+import ProductCard from "../../Components/ProductCard/ProductCard";
 import "../../Styles/SubCategory.scss";
 import productData from "../../Pages/Products/Products.json";
 
-const SubCategory = () => {
+const SubCategoryPage = () => {
   const { categoryId, subCategoryId } = useParams();
 
   // Find the category
@@ -63,4 +63,4 @@ const SubCategory = () => {
   );
 };
 
-export default SubCategory;
+export default SubCategoryPage;

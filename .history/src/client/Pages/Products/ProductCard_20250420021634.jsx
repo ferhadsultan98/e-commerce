@@ -1,7 +1,5 @@
-// client/Components/ProductCard/ProductCard.jsx
 import React from "react";
 import { ShoppingCart, Heart, Info } from "lucide-react";
-import { Link } from "react-router-dom";
 import "../../Styles/Products.scss";
 
 const ProductCard = ({ product }) => {
@@ -27,13 +25,10 @@ const ProductCard = ({ product }) => {
             <Heart size={20} />
           </button>
         </div>
-        <Link
-          to={`/product/${product.id}/features`}
-          className="actionButton featuresButton"
-        >
+        <button className="actionButton featuresButton">
           <Info size={20} />
           <span>Xüsusiyyətlər</span>
-        </Link>
+        </button>
       </div>
     </div>
   );

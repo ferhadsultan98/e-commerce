@@ -5,10 +5,9 @@ import Products from "./client/Pages/Products/Products";
 import TechLogoSlider from "./client/Pages/TechSlider/TechSlider";
 import Layout from "./client/Components/Layout/Layout";
 import productData from "./client/Pages/Products/Products.json";
-import ProductFeatures from "./client/Pages/ProductFeatures/ProductFeatures";
-import Category from "./client/Pages/Category/Category";
-import SubCategory from "./client/Pages/SubCategory/SubCategory";
-
+import CategoryPage from "./client/Pages/Category/CategoryPage";
+import SubCategoryPage from "./client/Pages/SubCategory/SubCategoryPage";
+import ProductFeaturesPage from "./client/Pages/ProductFeatures/ProductFeaturesPage";
 
 const PrivateRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
@@ -35,7 +34,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
-                <Category/>
+                <CategoryPage />
               </Layout>
             </PrivateRoute>
           }
@@ -45,7 +44,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
-                <SubCategory
+                <SubCategoryPage
                   categories={productData.categories}
                   subCategories={productData.subCategories}
                 />
@@ -58,7 +57,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
-                <ProductFeatures/>
+                <ProductFeaturesPage />
               </Layout>
             </PrivateRoute>
           }
