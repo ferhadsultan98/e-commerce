@@ -19,9 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 import productData from "../../Pages/Products/Products.json";
 import "../../Styles/BottomHeader.scss";
 
-const BottomHeader = ({ onAddToWishlist, onAddToCart }) => {
-  const [wishlistCount, setWishlistCount] = useState(0);
-  const [cartCount, setCartCount] = useState(0);
+const BottomHeader = ({ onAddToWishlist, onAddToCart, wishlistCount, cartCount }) => {
   const [showCategories, setShowCategories] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [scrolled, setScrolled] = useState(false);
@@ -65,16 +63,6 @@ const BottomHeader = ({ onAddToWishlist, onAddToCart }) => {
   const handleSubCategoryClick = (categoryId) => {
     setActiveSubCategory(categoryId);
     setShowCategories(false);
-  };
-
-  const handleAddToWishlist = (product) => {
-    setWishlistCount((prev) => prev + 1);
-    onAddToWishlist(product);
-  };
-
-  const handleAddToCart = (product) => {
-    setCartCount((prev) => prev + 1);
-    onAddToCart(product);
   };
 
   return (

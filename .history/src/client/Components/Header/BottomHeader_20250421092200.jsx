@@ -58,7 +58,6 @@ const BottomHeader = ({ onAddToWishlist, onAddToCart }) => {
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
       setSearchQuery("");
-      setMobileMenuOpen(false);
     }
   };
 
@@ -249,10 +248,6 @@ const BottomHeader = ({ onAddToWishlist, onAddToCart }) => {
           </div>
         </div>
       </div>
-      <div
-        className={`backdrop ${mobileMenuOpen ? "active" : ""}`}
-        onClick={() => setMobileMenuOpen(false)}
-      ></div>
     </>
   );
 };

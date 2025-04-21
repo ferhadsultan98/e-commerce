@@ -1,0 +1,215 @@
+
+.techJourney {
+  background: linear-gradient(180deg, #0d151b 0%, #1a252f 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.2) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .journeyContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .journeyTitle {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 15px rgba(0, 102, 204, 0.7);
+    animation: pulseGlow 3s ease-in-out infinite;
+
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 15px rgba(0, 102, 204, 0.7); }
+      50% { text-shadow: 0 0 25px rgba(0, 102, 204, 1); }
+      100% { text-shadow: 0 0 15px rgba(0, 102, 204, 0.7); }
+    }
+  }
+
+  .journeyPath {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .pathLine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #0066cc 0%, #ff5500 100%);
+    z-index: 1;
+    animation: flowLine 5s linear infinite;
+
+    @keyframes flowLine {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
+    }
+  }
+
+  .milestoneNode {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &:nth-child(even) {
+      justify-content: flex-end;
+      transform: translateX(50px);
+
+      .milestoneCard {
+        transform: translateX(20px);
+      }
+    }
+
+    &.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .nodeCircle {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 3px solid #0066cc;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      transition: all 0.3s ease;
+
+      .active & {
+        background: #ff5500;
+        box-shadow: 0 0 20px rgba(255, 85, 0, 0.8);
+        transform: translateX(-50%) scale(1.5);
+      }
+    }
+  }
+
+  .milestoneCard {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 3;
+
+    .active & {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0, 102, 204, 0.5);
+    }
+
+    .cardImage {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .cardYear {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0066cc;
+      margin-bottom: 10px;
+    }
+
+    .cardTitle {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .cardDescription {
+      font-size: 16px;
+      color: #888;
+      line-height: 1.5;
+    }
+  }
+
+  @media (max-width: 991px) {
+    padding: 60px 0;
+
+    .journeyTitle {
+      font-size: 28px;
+    }
+
+    .milestoneCard {
+      width: 350px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .milestoneNode {
+      justify-content: center !important;
+      transform: translateX(0) !important;
+
+      .milestoneCard {
+        width: 90%;
+        transform: none !important;
+      }
+    }
+
+    .pathLine {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .milestoneCard {
+      .cardImage {
+        height: 120px;
+      }
+
+      .cardYear {
+        font-size: 20px;
+      }
+
+      .cardTitle {
+        font-size: 18px;
+      }
+
+      .cardDescription {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 40px 0;
+
+    .journeyTitle {
+      font-size: 24px;
+    }
+
+    .milestoneCard {
+      padding: 15px;
+    }
+  }
+}

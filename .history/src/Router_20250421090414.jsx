@@ -11,9 +11,7 @@ import { useState } from "react";
 import ShoppingCard from "./client/Pages/ShoppingCard/ShoppingCard";
 import WishList from "./client/Pages/WishList/WishList";
 import Exa from "./client/Pages/Exa/Exa";
-import HeroShowcase from "./client/Pages/HeroShowCase/HeroShowCase";
-import TechJourney from "./client/Pages/ProductShowCase/TechJourney";
-import SearchPage from "./client/Pages/SearchPage/SearchPage";
+
 
 const PrivateRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
@@ -57,9 +55,8 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
                   onAddToCart={handleAddToCart}
                 />
                 <TechLogoSlider />
-                <Exa />
-                <HeroShowcase />
-                <TechJourney />
+                <Exa/>
+                <HeroS
               </Layout>
             </PrivateRoute>
           }
@@ -128,21 +125,9 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
             </PrivateRoute>
           }
         />
+
         <Route
-          path="/search"
-          element={
-            <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout onLogout={handleLogout}>
-                <SearchPage
-                  onAddToWishlist={handleAddToWishlist}
-                  onAddToCart={handleAddToCart}
-                />
-              </Layout>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="*"
+          path="/"
           element={
             isAuthenticated ? <Navigate to="/" /> : <Navigate to="/login" />
           }

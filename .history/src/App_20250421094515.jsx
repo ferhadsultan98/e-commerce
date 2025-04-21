@@ -29,7 +29,6 @@ function App() {
       handleLogout={handleLogout}
     />
     <ChatWidget/>
-    </>
   );
 }
 

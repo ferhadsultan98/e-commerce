@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Router from './Router';
-import ChatWidget from './client/Components/Chat/ChatWidget';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -22,14 +21,11 @@ function App() {
   };
 
   return (
-    <>
     <Router
       isAuthenticated={isAuthenticated}
       handleLogin={handleLogin}
       handleLogout={handleLogout}
     />
-    <ChatWidget/>
-    </>
   );
 }
 

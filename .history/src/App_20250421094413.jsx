@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Router from './Router';
-import ChatWidget from './client/Components/Chat/ChatWidget';
+import ChatWidget from './ChatWidget'; // Import the ChatWidget component
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -23,12 +23,14 @@ function App() {
 
   return (
     <>
-    <Router
-      isAuthenticated={isAuthenticated}
-      handleLogin={handleLogin}
-      handleLogout={handleLogout}
-    />
-    <ChatWidget/>
+      <Router
+        isAuthenticated={isAuthenticated}
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+      />
+      
+      {/* Chat Widget component - visible on all pages */}
+      <ChatWidget />
     </>
   );
 }

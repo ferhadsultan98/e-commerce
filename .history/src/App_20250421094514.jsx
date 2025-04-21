@@ -22,14 +22,13 @@ function App() {
   };
 
   return (
-    <>
+    <></>
     <Router
       isAuthenticated={isAuthenticated}
       handleLogin={handleLogin}
       handleLogout={handleLogout}
     />
     <ChatWidget/>
-    </>
   );
 }
 
