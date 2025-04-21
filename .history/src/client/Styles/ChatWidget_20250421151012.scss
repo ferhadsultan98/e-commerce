@@ -1,10 +1,11 @@
+/* ChatWidget.scss */
 .chatWidget {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
+  /* WebKit tarayıcılar (Chrome, Edge, Safari) */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -12,6 +13,7 @@
 
   ::-webkit-scrollbar-track {
     background: transparent;
+    display: none;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -23,13 +25,7 @@
     background-color: #555;
   }
 
-  ::-webkit-scrollbar-button {
-    display: none;
-    height: 0;
-    width: 0;
-    background: transparent;
-  }
-
+  /* Firefox */
   * {
     scrollbar-width: thin;
     scrollbar-color: #888 transparent;

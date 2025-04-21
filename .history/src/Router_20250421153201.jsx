@@ -53,12 +53,11 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <Layout onLogout={handleLogout}>
                 <MainPage/>
-                <TechLogoSlider />
                 <Products
                   onAddToWishlist={handleAddToWishlist}
                   onAddToCart={handleAddToCart}
                 />
-               
+                <TechLogoSlider />
                 <Exa />
                 <HeroShowcase />
      
