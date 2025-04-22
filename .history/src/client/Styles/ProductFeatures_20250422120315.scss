@@ -1,0 +1,124 @@
+// client/Styles/ProductFeaturesPage.scss
+.productFeaturesPage {
+    padding: 2.5rem 0;
+    background-color: #f5f5f5;
+  
+    .pageContainer {
+      max-width: 75rem;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+  
+    .pageHeader {
+      margin-bottom: 2rem;
+  
+      .backButton {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: #007bff;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #0056b3;
+        }
+  
+        svg {
+          stroke-width: 2;
+        }
+      }
+  
+      h1 {
+        font-size: 2rem;
+        color: #333;
+        margin: 0;
+      }
+    }
+  
+    .featuresContent {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  
+      .featuresList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+  
+        .featureItem {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.75rem 0;
+          border-bottom: 1px solid #f5f5f5;
+  
+          .featureLabel {
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+          }
+  
+          .featureValue {
+            color: #666;
+            flex: 2;
+            text-align: right;
+          }
+        }
+      }
+  
+      .noFeatures {
+        text-align: center;
+        color: #666;
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+  
+    .errorMessage {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #ff4d4f;
+      padding: 2.5rem;
+    }
+  
+    // Responsive design
+    @media (max-width: 768px) {
+      .pageContainer {
+        padding: 0 1rem;
+      }
+  
+      .pageHeader {
+        h1 {
+          font-size: 1.5rem;
+        }
+      }
+  
+      .featuresContent {
+        padding: 1rem;
+  
+        .featuresList {
+          .featureItem {
+            flex-direction: column;
+            gap: 0.5rem;
+  
+            .featureLabel,
+            .featureValue {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .pageHeader {
+        .backButton {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }

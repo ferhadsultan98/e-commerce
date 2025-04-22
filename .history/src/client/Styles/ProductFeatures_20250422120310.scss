@@ -1,0 +1,139 @@
+// ProductFeatures.scss
+
+.productFeaturesPage {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+
+  .pageContainer {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .pageHeader {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eaeaea;
+    position: relative;
+    background: linear-gradient(135deg, #f9f9f9, #f3f3f3);
+    
+    @media (min-width: 768px) {
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 1rem 0 0;
+      color: #333;
+      
+      @media (min-width: 768px) {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    .backButton {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      background-color: #f0f0f0;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      
+      &:hover {
+        color: #000;
+        background-color: #e5e5e5;
+      }
+      
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .featuresContent {
+    padding: 1.5rem;
+    
+    @media (min-width: 768px) {
+      padding: 2rem;
+    }
+
+    .featuresList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      
+      @media (min-width: 640px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .featureItem {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      
+      .featureLabel {
+        color: #666;
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      
+      .featureValue {
+        font-size: 1.125rem;
+        color: #222;
+        font-weight: 600;
+        word-break: break-word;
+      }
+    }
+
+    .noFeatures {
+      text-align: center;
+      color: #888;
+      font-size: 1.125rem;
+      margin: 3rem 0;
+      font-style: italic;
+    }
+  }
+
+  .errorMessage {
+    text-align: center;
+    color: #d92b2b;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 5rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+  }
+}
