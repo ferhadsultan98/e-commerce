@@ -1,0 +1,162 @@
+$primaryColor: #007bff;
+$secondaryColor: #f8f9fa;
+$textColor: #333;
+$discountColor: #e74c3c;
+
+.dealsSection {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, $secondaryColor, #fff);
+  text-align: center;
+
+  .sectionTitle {
+    font-size: 2.5rem;
+    color: $textColor;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .dealsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .dealCard {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .dealImage {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .dealContent {
+      padding: 20px;
+
+      .dealTitle {
+        font-size: 1.5rem;
+        color: $textColor;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .dealPrice {
+        font-size: 1.2rem;
+        color: $primaryColor;
+        font-weight: 700;
+        margin-bottom: 10px;
+
+        .originalPrice {
+          text-decoration: line-through;
+          color: #999;
+          font-weight: 400;
+          margin-left: 10px;
+        }
+      }
+
+      .dealDiscount {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: $discountColor;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .countdownTimer {
+        font-size: 0.95rem;
+        color: $textColor;
+        margin-top: 10px;
+        font-weight: 500;
+      }
+
+      .dealButton {
+        display: inline-block;
+        padding: 10px 20px;
+        background: $primaryColor;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 15px;
+        font-weight: 500;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: darken($primaryColor, 10%);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sectionTitle {
+      font-size: 2rem;
+    }
+
+    .dealsGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .dealCard {
+      .dealImage {
+        height: 180px;
+      }
+
+      .dealContent {
+        .dealTitle {
+          font-size: 1.3rem;
+        }
+
+        .dealPrice {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sectionTitle {
+      font-size: 1.8rem;
+    }
+
+    .dealCard {
+      .dealImage {
+        height: 160px;
+      }
+
+      .dealContent {
+        padding: 15px;
+
+        .dealTitle {
+          font-size: 1.2rem;
+        }
+
+        .dealPrice {
+          font-size: 1rem;
+        }
+
+        .dealButton {
+          padding: 8px 16px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
