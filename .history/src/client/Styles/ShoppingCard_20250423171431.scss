@@ -293,10 +293,10 @@ $border-radius: 10px;
 
   &__view-details {
     color: $primary-color;
+    font-size: 1px;
     text-decoration: none;
     display: flex;
-    align-items: center;
-    gap: 4px;
+
     &:hover {
       text-decoration: underline;
     }
@@ -307,7 +307,7 @@ $border-radius: 10px;
     align-items: center;
     gap: 4px;
     color: #718096;
-
+    font-size: 14px;
     background: none;
     border: none;
     padding: 0;

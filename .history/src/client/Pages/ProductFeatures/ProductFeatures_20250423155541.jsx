@@ -11,7 +11,6 @@ import {
 import productData from "../../Pages/Products/Products.json";
 import "../../Styles/ProductFeatures.scss";
 import BackButton from "../../Components/BackButton/BackButton";
-import CustomerReviews from "../CustomerReviews/CustomerReviews";
 
 const ProductFeatures = () => {
   const { productId } = useParams();
@@ -294,7 +293,7 @@ const ProductFeatures = () => {
           </div>
         </div>
       </div>
-      <CustomerReviews/>
+      <Custom
     </div>
   );
 };

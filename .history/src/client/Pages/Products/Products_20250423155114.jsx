@@ -35,7 +35,7 @@ const Products = ({ onAddToWishlist, onAddToCart }) => {
         {visibleProducts < filteredProducts.length && (
           <div className="showMoreContainer">
             <button className="showMoreButton" onClick={handleShowMore}>
-              <IoIosArrowDown fontSize={45} />
+              <IoIosArrowDown fontSize={25} />
             </button>
           </div>
         )}

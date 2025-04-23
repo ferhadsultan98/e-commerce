@@ -13,15 +13,12 @@ const RelatedProducts = ({ items = [], allProducts = [], onAddToWishlist, onAddT
     : [];
 
   const sliderSettings = {
-    dots: false,
-    arrows: false,
+    dots: true,
     infinite: relatedProducts.length > 1,
     speed: 500,
     slidesToShow: Math.min(relatedProducts.length, 4),
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    cssEase: "linear",
+    arrows: true,
     responsive: [
       {
         breakpoint: 1024,

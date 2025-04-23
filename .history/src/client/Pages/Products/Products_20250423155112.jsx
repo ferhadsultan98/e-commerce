@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../Styles/Products.scss";
 import productData from "./Products.json";
 import { IoIosArrowDown } from "react-icons/io";
+
 import ProductCard from "./ProductCard";
 
 const Products = ({ onAddToWishlist, onAddToCart }) => {
@@ -35,7 +36,8 @@ const Products = ({ onAddToWishlist, onAddToCart }) => {
         {visibleProducts < filteredProducts.length && (
           <div className="showMoreContainer">
             <button className="showMoreButton" onClick={handleShowMore}>
-              <IoIosArrowDown fontSize={45} />
+            <IoIosArrowDown  fontSize={25} />
+
             </button>
           </div>
         )}

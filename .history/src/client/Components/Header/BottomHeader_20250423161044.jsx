@@ -20,12 +20,7 @@ import { Link, useNavigate } from "react-router-dom";
 import productData from "../../Pages/Products/Products.json";
 import "../../Styles/BottomHeader.scss";
 
-const BottomHeader = ({
-  onAddToWishlist,
-  onAddToCart,
-  wishlistItems,
-  cartItems,
-}) => {
+const BottomHeader = ({ onAddToWishlist, onAddToCart, wishlistItems, cartItems }) => {
   const [wishlistCount, setWishlistCount] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const [showCategories, setShowCategories] = useState(false);
@@ -205,14 +200,14 @@ const BottomHeader = ({
               <Link to="/wishlist" className="actionButton wishlistButton">
                 <Heart size={20} />
                 {wishlistCount > 0 && (
-                  <span className="badge">{wishlistCount}</span>
-                )}
+      <span className="badge">{wishlistCount}</span>
+    )}
                 <span className="actionText">Wishlist</span>
               </Link>
 
               <Link to="/shoppingcard" className="actionButton cartButton">
                 <ShoppingCart size={20} />
-                {cartCount > 0 && <span className="badge">{cartCount}</span>}
+                <span className="badge">{cartCount}</span>
                 <span className="actionText">Cart</span>
               </Link>
             </div>

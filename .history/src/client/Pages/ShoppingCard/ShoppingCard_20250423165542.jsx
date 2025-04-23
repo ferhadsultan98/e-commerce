@@ -6,15 +6,8 @@ import "../../Styles/ShoppingCard.scss";
 import RelatedProducts from "../RelatedProducts/RelatedProducts";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { TbListDetails } from "react-icons/tb";
 
-const ShoppingCard = ({
-  cartItems = [],
-  onRemoveFromCart,
-  onAddToWishlist,
-  onAddToCart,
-  allProducts = [],
-}) => {
+const ShoppingCard = ({ cartItems = [], onRemoveFromCart, onAddToWishlist, onAddToCart, allProducts = [] }) => {
   const [quantities, setQuantities] = React.useState(
     cartItems.reduce((acc, item) => {
       acc[item.id] = item.quantity || 1;
@@ -32,9 +25,7 @@ const ShoppingCard = ({
 
   const calculateItemTotal = (item) => {
     const quantity = quantities[item.id] || 1;
-    return item.discountPrice
-      ? item.discountPrice * quantity
-      : item.price * quantity;
+    return item.discountPrice ? item.discountPrice * quantity : item.price * quantity;
   };
 
   const totalPrice = cartItems.reduce(
@@ -93,11 +84,7 @@ const ShoppingCard = ({
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
                   <div className="cart-item__image-container">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="cart-item__image"
-                    />
+                    <img src={item.image} alt={item.name} className="cart-item__image" />
                   </div>
                   <div className="cart-item__details">
                     <h3 className="cart-item__name">{item.name}</h3>
@@ -111,53 +98,34 @@ const ShoppingCard = ({
                             {item.discountPrice.toFixed(2)} ₼
                           </span>
                           <span className="cart-item__discount-badge">
-                            {Math.round(
-                              ((item.price - item.discountPrice) / item.price) *
-                                100
-                            )}
-                            % OFF
+                            {Math.round(((item.price - item.discountPrice) / item.price) * 100)}% OFF
                           </span>
                         </>
                       ) : (
-                        <span className="cart-item__price">
-                          {item.price.toFixed(2)} ₼
-                        </span>
+                        <span className="cart-item__price">{item.price.toFixed(2)} ₼</span>
                       )}
                     </div>
                     <div className="cart-item__quantity">
                       <button
                         className="cart-item__quantity-btn"
-                        onClick={() =>
-                          updateQuantity(item.id, quantities[item.id] - 1)
-                        }
+                        onClick={() => updateQuantity(item.id, quantities[item.id] - 1)}
                         disabled={quantities[item.id] <= 1}
                       >
                         <Minus size={16} />
                       </button>
-                      <span className="cart-item__quantity-value">
-                        {quantities[item.id] || 1}
-                      </span>
+                      <span className="cart-item__quantity-value">{quantities[item.id] || 1}</span>
                       <button
                         className="cart-item__quantity-btn"
-                        onClick={() =>
-                          updateQuantity(item.id, quantities[item.id] + 1)
-                        }
+                        onClick={() => updateQuantity(item.id, quantities[item.id] + 1)}
                       >
                         <Plus size={16} />
                       </button>
                     </div>
                     <div className="cart-item__actions">
-                      <Link
-                        to={`/product/${item.id}/features`}
-                        className="cart-item__view-details"
-                      >
-                        <TbListDetails />
+                      <Link to={`/product/${item.id}/features`} className="cart-item__view-details">
                         View Details
                       </Link>
-                      <button
-                        className="cart-item__remove"
-                        onClick={() => onRemoveFromCart(item.id)}
-                      >
+                      <button className="cart-item__remove" onClick={() => onRemoveFromCart(item.id)}>
                         <Trash2 size={16} />
                         <span>Remove</span>
                       </button>
@@ -192,11 +160,7 @@ const ShoppingCard = ({
                     {cartItems
                       .reduce((sum, item) => {
                         if (item.discountPrice) {
-                          return (
-                            sum +
-                            (item.price - item.discountPrice) *
-                              (quantities[item.id] || 1)
-                          );
+                          return sum + (item.price - item.discountPrice) * (quantities[item.id] || 1);
                         }
                         return sum;
                       }, 0)
@@ -210,9 +174,7 @@ const ShoppingCard = ({
               <span>Total:</span>
               <span>{totalPrice.toFixed(2)} ₼</span>
             </div>
-            <button className="shopping-cart__checkout-btn">
-              Proceed to Checkout
-            </button>
+            <button className="shopping-cart__checkout-btn">Proceed to Checkout</button>
             <Link to="/products" className="shopping-cart__continue-btn">
               Continue Shopping
             </Link>

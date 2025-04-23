@@ -492,3 +492,8 @@ $mobile-breakpoint: 768px;
   }
 }
 
+// Make small tweaks to React component
+// Add this to your BottomHeader.jsx to enable the animation
+
+// Add this class when the dropdown is showing
+// className={`categoryDropdown ${showCategories ? 'show' : ''}`}
