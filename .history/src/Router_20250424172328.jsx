@@ -20,7 +20,7 @@ import ScrollToTop from "./client/Components/ScrollToTop/ScrollToTop";
 const PrivateRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
-5
+
 const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);

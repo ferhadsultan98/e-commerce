@@ -1,0 +1,322 @@
+.exaSection {
+  padding: 4rem 1rem;
+  background-color: #f8f9fa;
+}
+
+.exaContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.exaHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.exaTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1c2526;
+  margin-bottom: 0.5rem;
+}
+
+.exaSubtitle {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.exaCard {
+  display: flex;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.exaCard:hover {
+  transform: translateY(-5px);
+}
+
+.exaImageArea {
+  flex: 1;
+  position: relative;
+  padding: 2rem;
+  background: #f1f3f5;
+}
+
+.exaDiscount {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #dc3545;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.exaImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.exaImage {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.exaCard:hover .exaImage {
+  transform: scale(1.05);
+}
+
+.exaViewBtn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1c2526;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exaCard:hover .exaViewBtn {
+  opacity: 1;
+}
+
+.exaViewIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.exaContent {
+  flex: 1;
+  padding: 2rem;
+}
+
+.exaTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.exaCategory {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+.exaStars {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.exaStar svg {
+  width: 18px;
+  height: 18px;
+  color: #ffc107;
+}
+
+.exaStar.filled svg {
+  fill: #ffc107;
+}
+
+.exaRating {
+  font-size: 0.9rem;
+  color: #1c2526;
+  margin-left: 0.5rem;
+}
+
+.exaProductName {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1c2526;
+  margin-bottom: 1rem;
+}
+
+.exaSpecList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.exaSpecItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.exaSpecIcon {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.exaColorPicker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.exaColorTitle {
+  font-size: 0.9rem;
+  color: #1c2526;
+}
+
+.exaColors {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.exaColorBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.exaColorBtn.active {
+  border-color: #1c2526;
+}
+
+.exaPricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.exaPriceInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.exaPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c2526;
+}
+
+.exaOldPrice {
+  font-size: 1rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+.exaDiscount {
+  font-size: 0.9rem;
+  color: #dc3545;
+}
+
+.exaActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flexActionButton {
+  display: flex;
+  gap: 1rem;
+}
+
+.actionButton {
+  background: #1c2526;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+  background: #343a40;
+}
+
+@media (max-width: 768px) {
+  .exaCard {
+    flex-direction: column;
+  }
+
+  .exaImageArea,
+  .exaContent {
+    padding: 1.5rem;
+  }
+
+  .exaImage {
+    max-height: 200px;
+  }
+
+  .exaTitle {
+    font-size: 2rem;
+  }
+
+  .exaProductName {
+    font-size: 1.5rem;
+  }
+
+  .exaPrice {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .exaSection {
+    padding: 2rem 0.5rem;
+  }
+
+  .exaImageArea,
+  .exaContent {
+    padding: 1rem;
+  }
+
+  .exaImage {
+    max-height: 150px;
+  }
+
+  .exaTitle {
+    font-size: 1.8rem;
+  }
+
+  .exaSubtitle {
+    font-size: 1rem;
+  }
+
+  .exaProductName {
+    font-size: 1.3rem;
+  }
+
+  .exaPrice {
+    font-size: 1.2rem;
+  }
+
+  .exaViewBtn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .exaViewIcon svg {
+    width: 16px;
+    height: 16px;
+  }
+}

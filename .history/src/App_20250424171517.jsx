@@ -26,11 +26,13 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
       <Router
         isAuthenticated={isAuthenticated}
         handleLogin={handleLogin}
         handleLogout={handleLogout}
-      >
+        >
+        </BrowserRouter>
 
       </Router>
       <ChatWidget />

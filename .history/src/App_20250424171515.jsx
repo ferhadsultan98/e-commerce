@@ -26,6 +26,8 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
+    </BrowserRouter>
       <Router
         isAuthenticated={isAuthenticated}
         handleLogin={handleLogin}

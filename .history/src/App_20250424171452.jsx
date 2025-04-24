@@ -4,7 +4,6 @@ import Router from "./Router";
 import ChatWidget from "./client/Components/Chat/ChatWidget";
 import ScrollButton from "./client/Components/ScrollButton/ScrollButton";
 import ScrollToTop from "./client/Components/ScrollToTop/ScrollToTop";
-import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -26,12 +25,13 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Router
         isAuthenticated={isAuthenticated}
         handleLogin={handleLogin}
         handleLogout={handleLogout}
       >
-
+        
       </Router>
       <ChatWidget />
       <ScrollButton />

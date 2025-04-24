@@ -10,6 +10,7 @@ import SubCategory from "./client/Pages/SubCategory/SubCategory";
 import { useState } from "react";
 import ShoppingCard from "./client/Pages/ShoppingCard/ShoppingCard";
 import WishList from "./client/Pages/WishList/WishList";
+import Exa from "./client/Pages/Exa/Exa";
 import HeroShowcase from "./client/Pages/HeroShowCase/HeroShowCase";
 import SearchPage from "./client/Pages/SearchPage/SearchPage";
 import MainPage from "./client/Pages/MainPage/MainPage";
@@ -20,7 +21,7 @@ import ScrollToTop from "./client/Components/ScrollToTop/ScrollToTop";
 const PrivateRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
-5
+
 const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);

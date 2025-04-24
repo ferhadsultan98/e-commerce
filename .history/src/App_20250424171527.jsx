@@ -26,15 +26,15 @@ function App() {
 
   return (
     <>
-      <Router
-        isAuthenticated={isAuthenticated}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
-      >
-
-      </Router>
-      <ChatWidget />
-      <ScrollButton />
+      <BrowserRouter>
+        <Router
+          isAuthenticated={isAuthenticated}
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+        ></Router>
+        <ChatWidget />
+        <ScrollButton />
+      </BrowserRouter>
     </>
   );
 }

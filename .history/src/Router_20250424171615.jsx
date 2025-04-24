@@ -10,6 +10,7 @@ import SubCategory from "./client/Pages/SubCategory/SubCategory";
 import { useState } from "react";
 import ShoppingCard from "./client/Pages/ShoppingCard/ShoppingCard";
 import WishList from "./client/Pages/WishList/WishList";
+import Exa from "./client/Pages/Exa/Exa";
 import HeroShowcase from "./client/Pages/HeroShowCase/HeroShowCase";
 import SearchPage from "./client/Pages/SearchPage/SearchPage";
 import MainPage from "./client/Pages/MainPage/MainPage";
@@ -20,7 +21,7 @@ import ScrollToTop from "./client/Components/ScrollToTop/ScrollToTop";
 const PrivateRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
-5
+
 const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -47,27 +48,27 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
+    <ScrollToTop/
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route
           path="/"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
                 onAddToWishlist={handleAddToWishlist}
                 onAddToCart={handleAddToCart}
               >
-                <MainPage />
+                <MainPage/>
                 <TechLogoSlider />
                 <Products
                   onAddToWishlist={handleAddToWishlist}
                   onAddToCart={handleAddToCart}
                 />
-
+                <Exa />
                 <HeroShowcase />
               </Layout>
             </PrivateRoute>
@@ -77,7 +78,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/category/:categoryId"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -96,7 +97,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/deals"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -115,7 +116,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/category/:categoryId/:subCategoryId"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -136,7 +137,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/product/:productId/features"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -152,7 +153,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/wishlist"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -173,7 +174,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/shoppingcard"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -193,7 +194,7 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
           path="/search"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
@@ -208,11 +209,11 @@ const Router = ({ isAuthenticated, handleLogin, handleLogout }) => {
             </PrivateRoute>
           }
         />
-        <Route
+         <Route
           path="/stores"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Layout
+              <Layout 
                 onLogout={handleLogout}
                 wishlistItems={wishlistItems}
                 cartItems={cartItems}
