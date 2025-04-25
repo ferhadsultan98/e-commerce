@@ -1,0 +1,154 @@
+$primary-color: #3366ff;
+$secondary-color: #6c757d;
+$text-color: #333;
+$text-light: #767676;
+$sidebar-bg: #ffffff;
+$border-color: #e3e8ef;
+$sidebar-width: 260px;
+$sidebar-closed-width: 70px;
+$box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+$transition: all 0.3s ease;
+
+.sidebar {
+  width: $sidebar-width;
+  height: 100vh;
+  background-color: $sidebar-bg;
+  box-shadow: $box-shadow;
+  transition: $transition;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+a{
+    tex
+}
+  &.closed {
+    width: $sidebar-closed-width;
+  }
+
+  .sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid $border-color;
+
+    h2 {
+      font-weight: 600;
+      color: $primary-color;
+      font-size: 1.5rem;
+    }
+
+    .toggleBtn {
+      background: none;
+      border: none;
+      color: $secondary-color;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .sidebarMenu {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+
+    .menuItem {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: $transition;
+      border-left: 3px solid transparent;
+      color: $text-light;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+        color: $primary-color;
+      }
+
+      &.active {
+        border-left-color: $primary-color;
+        background-color: rgba($primary-color, 0.08);
+        color: $primary-color;
+        font-weight: 500;
+      }
+
+      .material-icons {
+        margin-right: 15px;
+      }
+
+      .label {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .sidebarFooter {
+    border-top: 1px solid $border-color;
+    padding: 15px;
+
+    .userInfo {
+      display: flex;
+      align-items: center;
+
+      .userAvatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $primary-color;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        margin-right: 12px;
+      }
+
+      .userDetails {
+        flex: 1;
+
+        .userName {
+          font-weight: 500;
+          margin-bottom: 2px;
+          font-size: 0.9rem;
+        }
+
+        .userRole {
+          color: $text-light;
+          font-size: 0.8rem;
+        }
+      }
+
+      .logoutBtn {
+        background: none;
+        border: none;
+        color: $text-light;
+        cursor: pointer;
+
+        &:hover {
+          color: #f44336;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(0);
+
+    &.closed {
+      transform: translateX(-100%);
+      width: $sidebar-width;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+// AdminLayout.scss
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// Değişkenler
+$primary-color: #3366ff;
+$background-color: #f5f7fb;
+$transition: all 0.3s ease;
+$sidebar-width: 260px;
+$sidebar-closed-width: 70px;
+
+
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.content-area {
+  flex: 1;
+  margin-left: $sidebar-width;
+  transition: $transition;
+  overflow-y: auto;
+  padding: 20px;
+
+  &.expanded {
+    margin-left: $sidebar-closed-width;
+  }
+}
+
+@media (max-width: 992px) {
+  .content-area {
+    margin-left: $sidebar-closed-width;
+    
+    &.expanded {
+      margin-left: 0;
+    }
+  }
+}

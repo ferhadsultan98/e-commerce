@@ -55,10 +55,10 @@ body {
   }
 }
 
-// Product Card
+// Product Card - Redesigned
 .productCard {
   background: white;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
   box-shadow: $cardShadow;
@@ -75,8 +75,10 @@ body {
       transform: scale(1.05);
     }
     
-    .actionButton {
+    .productActions {
       opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
     }
   }
 }
@@ -138,7 +140,7 @@ body {
   .productName {
     font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: $darkColor;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -168,14 +170,26 @@ body {
   }
 }
 
-// Product Actions
+// Product Actions - Now visible on hover
 .productActions {
-  padding: 0 20px 18px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  transition: $transition;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  z-index: 2;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   
   .flexActionButton {
     display: flex;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    justify-content: center;
   }
   
   .actionButton {
@@ -189,7 +203,6 @@ body {
     font-size: 0.9rem;
     border-radius: 8px;
     transition: $transition;
-    opacity: 0.9;
     
     &:hover {
       transform: translateY(-2px);
@@ -327,6 +340,14 @@ body {
 // Responsive adjustments
 @media (max-width: 768px) {
   .productActions {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    position: relative;
+    background: transparent;
+    padding: 12px 16px;
+    border-top: none;
+    
     .flexActionButton {
       justify-content: space-between;
     }
@@ -344,8 +365,12 @@ body {
   }
   
   .productInfo {
+    padding: 16px 16px 0 16px;
+    
     .productName {
       font-size: 0.95rem;
+      margin-bottom: 8px;
+      height: 40px;
     }
     
     .productPriceContainer {
@@ -356,10 +381,11 @@ body {
   }
 }
 
-// Add this to your JS to update the category component
+// Category selector with horizontal scroll
 .categorySelector {
   position: relative;
   overflow: hidden;
+  margin-bottom: 30px;
   
   &:before {
     content: "";
