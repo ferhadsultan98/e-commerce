@@ -6,7 +6,6 @@ const AdminProducts = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [allSubCategories, setAllSubCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedSubCategory, setSelectedSubCategory] = useState("all");
@@ -20,17 +19,22 @@ const AdminProducts = () => {
       try {
         const productsSnap = await get(ref(db, "products"));
         const categoriesSnap = await get(ref(db, "categories"));
-        const subCategoriesSnap = await get(ref(db, "subCategories")); // ayrıca subCategories-i çəkirik
 
         const productsData = productsSnap.exists() ? Object.values(productsSnap.val()) : [];
         const categoriesData = categoriesSnap.exists() ? Object.values(categoriesSnap.val()) : [];
-        const subCategoriesData = subCategoriesSnap.exists() ? Object.values(subCategoriesSnap.val()) : [];
 
         setProducts(productsData);
         setFilteredProducts(productsData);
         setCategories(categoriesData);
-        setAllSubCategories(subCategoriesData);
 
+        if (selectedCategory !== "all") {
+          const selectedCat = categoriesData.find(
+            (cat) => cat.id === selectedCategory
+          );
+          setSubCategories(selectedCat?.subCategories || []);
+        } else {
+          setSubCategories([]);
+        }
       } catch (error) {
         console.error("Error fetching data: ", error);
       } finally {
@@ -39,17 +43,7 @@ const AdminProducts = () => {
     };
 
     fetchData();
-  }, []);
-
-  // Yeni useEffect (selectedCategory dəyişəndə filtr subCategories)
-  useEffect(() => {
-    if (selectedCategory !== "all" && allSubCategories.length > 0) {
-      const filteredSubCats = allSubCategories.filter(subCat => subCat.parentCategoryId === selectedCategory);
-      setSubCategories(filteredSubCats);
-    } else {
-      setSubCategories([]);
-    }
-  }, [selectedCategory, allSubCategories]);
+  }, [selectedCategory]);
 
   useEffect(() => {
     let filtered = products;

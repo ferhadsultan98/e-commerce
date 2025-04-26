@@ -156,7 +156,8 @@ $widescreen: 1200px;
   padding: 16px;
   background-color: $backgroundColor;
   border-radius: 8px;
-
+  position: fixed;
+  z-index: 9;
   
   @media (max-width: $tablet) {
     flex-direction: column;

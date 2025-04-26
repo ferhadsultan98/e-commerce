@@ -1,29 +1,26 @@
-// src/admin/Components/AdminLogin/AdminLogin.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './AdminLogin.scss';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "./AdminLogin.scss";
 
 const AdminLogin = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (email && password) {
-      if (email === 'admin@admin.com' && password === 'admin') {
-        sessionStorage.setItem('isAuthenticated', 'true');
-        sessionStorage.setItem('isAdmin', 'true');
-        onLogin(true);
-        setError('');
-        navigate('/admin');
+      if (email === "admin@admin.com" && password === "admin") {
+        onLogin(true); 
+        setError("");
+        navigate("/admin"); // Navigate to /admin on successful login
       } else {
-        setError('Invalid admin credentials');
+        setError("Invalid admin credentials");
       }
     } else {
-      setError('Please fill in all fields');
+      setError("Please fill in all fields");
     }
   };
 

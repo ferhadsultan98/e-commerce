@@ -1,51 +1,45 @@
-// MainPage.jsx
 import React, { useEffect, useState } from 'react';
+import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
+import { app } from '../../../server/server'; // Adjust path to your firebase config
 import '../../Styles/MainPage.scss';
 
 const MainPage = () => {
   const [leftCurrentSlide, setLeftCurrentSlide] = useState(0);
   const [rightCurrentSlide, setRightCurrentSlide] = useState(0);
+  const [leftSlides, setLeftSlides] = useState([]);
+  const [rightSlides, setRightSlides] = useState([]);
   
-  const leftSlides = [
-    {
-      id: 1,
-      image: './src/client/Assets/advertise2.png',
-      title: 'Premium Laptops - Save 30%'
-    },
-    {
-      id: 2,
-      image: './src/client/Assets/advertise1.png',
-      title: 'Latest Smartphones - New Models'
-    }, 
-    {
-      id: 3,
-      image: './src/client/Assets/advertise1.png',
-      title: 'Gaming Accessories - Spring Sale'
-    }
-  ];
-  
-  const rightSlides = [
-    {
-      id: 1,
-      image: './src/client/Assets/advertise2.png',
-      title: 'Smart Watches'
-    },
-    {
-      id: 2,
-      image: './src/client/Assets/advertise2.png',
-      title: 'Wireless Headphones'
-    },
-    {
-      id: 3,
-      image: './src/client/Assets/advertise1.png',
-      title: 'Smart Home Devices'
-    }
-  ];
-  
+  const db = getFirestore(app);
+
+  useEffect(() => {
+    // Fetch left slider data
+    const unsubscribeLeft = onSnapshot(collection(db, 'leftSlides'), (snapshot) => {
+      const slidesData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setLeftSlides(slidesData);
+    });
+
+    // Fetch right slider data
+    const unsubscribeRight = onSnapshot(collection(db, 'rightSlides'), (snapshot) => {
+      const slidesData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setRightSlides(slidesData);
+    });
+
+    return () => {
+      unsubscribeLeft();
+      unsubscribeRight();
+    };
+  }, [db]);
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setLeftCurrentSlide(prevSlide => (prevSlide + 1) % leftSlides.length);
-      setRightCurrentSlide(prevSlide => (prevSlide + 1) % rightSlides.length);
+      setLeftCurrentSlide(prevSlide => (prevSlide + 1) % (leftSlides.length || 1));
+      setRightCurrentSlide(prevSlide => (prevSlide + 1) % (rightSlides.length || 1));
     }, 4000);
     
     return () => clearInterval(interval);

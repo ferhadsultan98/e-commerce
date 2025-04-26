@@ -156,7 +156,6 @@ $widescreen: 1200px;
   padding: 16px;
   background-color: $backgroundColor;
   border-radius: 8px;
-
   
   @media (max-width: $tablet) {
     flex-direction: column;
@@ -243,6 +242,7 @@ $widescreen: 1200px;
 // Table
 .tableContainer {
   width: 100%;
+  height: 40vh;
   overflow-x: auto;
   box-shadow: $shadow;
   border-radius: 8px;

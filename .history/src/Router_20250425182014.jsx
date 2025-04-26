@@ -1,58 +1,37 @@
-// src/Router.js
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
-import AdminLogin from './admin/Components/AdminLogin/AdminLogin';
-import Products from './client/Pages/Products/Products';
-import TechLogoSlider from './client/Pages/TechSlider/TechSlider';
-import Layout from './client/Components/Layout/Layout';
-import productData from './client/Pages/Products/Products.json';
-import ProductFeatures from './client/Pages/ProductFeatures/ProductFeatures';
-import Category from './client/Pages/Category/Category';
-import SubCategory from './client/Pages/SubCategory/SubCategory';
-import ShoppingCard from './client/Pages/ShoppingCard/ShoppingCard';
-import WishList from './client/Pages/WishList/WishList';
-import SearchPage from './client/Pages/SearchPage/SearchPage';
-import MainPage from './client/Pages/MainPage/MainPage';
-import Stores from './client/Pages/Stores/Stores';
-import Deals from './client/Pages/Deals/Deals';
-import ScrollToTop from './client/Components/ScrollToTop/ScrollToTop';
-import AdminLayout from './admin/Components/AdminLayout/AdminLayout';
-import AdminProducts from './admin/Pages/AdminProducts/AdminProducts';
-import AdminPreview from './admin/Pages/AdminPreview/AdminPreview';
-import AdminSlider from './admin/Pages/AdminSlider/AdminSlider';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./client/Components/Login/Login";
+import AdminLogin from "./admin/Components/AdminLogin/AdminLogin"; // Import AdminLogin
+import Products from "./client/Pages/Products/Products";
+import TechLogoSlider from "./client/Pages/TechSlider/TechSlider";
+import Layout from "./client/Components/Layout/Layout";
+import productData from "./client/Pages/Products/Products.json";
+import ProductFeatures from "./client/Pages/ProductFeatures/ProductFeatures";
+import Category from "./client/Pages/Category/Category";
+import SubCategory from "./client/Pages/SubCategory/SubCategory";
+import { useState } from "react";
+import ShoppingCard from "./client/Pages/ShoppingCard/ShoppingCard";
+import WishList from "./client/Pages/WishList/WishList";
+import SearchPage from "./client/Pages/SearchPage/SearchPage";
+import MainPage from "./client/Pages/MainPage/MainPage";
+import Stores from "./client/Pages/Stores/Stores";
+import Deals from "./client/Pages/Deals/Deals";
+import ScrollToTop from "./client/Components/ScrollToTop/ScrollToTop";
+import AdminLayout from "./admin/Components/AdminLayout/AdminLayout";
+import AdminProducts from "./admin/Pages/AdminProducts/AdminProducts";
+import AdminPreview from "./admin/Pages/AdminPreview/AdminPreview";
+import AdminSlider from "./admin/Pages/AdminSlider/AdminSlider";
 
 const PrivateRoute = ({ children, isAuthenticated }) => {
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 const AdminRoute = ({ children, isAdmin }) => {
-  return isAdmin ? children : <Navigate to="/login" />;
+  return isAdmin ? children : <Navigate to="/admin/login" />; // Redirect to admin login
 };
 
-const Router = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    sessionStorage.getItem('isAuthenticated') === 'true'
-  );
-  const [isAdmin, setIsAdmin] = useState(
-    sessionStorage.getItem('isAdmin') === 'true'
-  );
+const Router = ({ isAuthenticated, isAdmin, handleLogin, handleLogout }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-
-  const handleLogin = (isAdminLogin) => {
-    setIsAuthenticated(true);
-    if (isAdminLogin) {
-      setIsAdmin(true);
-    }
-  };
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setIsAdmin(false);
-    sessionStorage.removeItem('isAuthenticated');
-    sessionStorage.removeItem('isAdmin');
-    window.location.href = '/login'; // Force redirect to login
-  };
 
   const handleAddToWishlist = (product) => {
     if (!wishlistItems.some((item) => item.id === product.id)) {
@@ -78,34 +57,29 @@ const Router = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        {/* Login Route */}
+        {/* Auth Routes */}
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route
-          path="/login"
-          element={
-            isAuthenticated && isAdmin ? (
-              <Navigate to="/admin" />
-            ) : (
-              <AdminLogin onLogin={handleLogin} />
-            )
-          }
+          path="/admin/login"
+          element={<AdminLogin onLogin={handleLogin} />}
         />
 
-        {/* Admin Routes */}
         <Route
           path="/admin"
           element={
             <AdminRoute isAdmin={isAdmin}>
-              <AdminLayout onLogout={handleLogout}>
+              <AdminLayout>
                 <AdminProducts />
               </AdminLayout>
             </AdminRoute>
           }
         />
+
         <Route
           path="/admin/preview"
           element={
             <AdminRoute isAdmin={isAdmin}>
-              <AdminLayout onLogout={handleLogout}>
+              <AdminLayout>
                 <AdminPreview />
               </AdminLayout>
             </AdminRoute>
@@ -115,8 +89,8 @@ const Router = () => {
           path="/admin/slider"
           element={
             <AdminRoute isAdmin={isAdmin}>
-              <AdminLayout onLogout={handleLogout}>
-                <AdminSlider />
+              <AdminLayout>
+                <AdminSlider/>
               </AdminLayout>
             </AdminRoute>
           }
@@ -126,20 +100,22 @@ const Router = () => {
         <Route
           path="/"
           element={
-            <Layout
-              onLogout={handleLogout}
-              wishlistItems={wishlistItems}
-              cartItems={cartItems}
-              onAddToWishlist={handleAddToWishlist}
-              onAddToCart={handleAddToCart}
-            >
-              <MainPage />
-              <TechLogoSlider />
-              <Products
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <Layout
+                onLogout={handleLogout}
+                wishlistItems={wishlistItems}
+                cartItems={cartItems}
                 onAddToWishlist={handleAddToWishlist}
                 onAddToCart={handleAddToCart}
-              />
-            </Layout>
+              >
+                <MainPage />
+                <TechLogoSlider />
+                <Products
+                  onAddToWishlist={handleAddToWishlist}
+                  onAddToCart={handleAddToCart}
+                />
+              </Layout>
+            </PrivateRoute>
           }
         />
         <Route
@@ -297,7 +273,12 @@ const Router = () => {
           }
         />
         {/* Fallback Route */}
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route
+          path="*"
+          element={
+            isAuthenticated ? <Navigate to="/" /> : <Navigate to="/login" />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
