@@ -1,0 +1,253 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .productCardImageContainer {
+    position: relative;
+    padding-top: 100%;
+    overflow: hidden;
+    background-color: #f7f7f7;
+  }
+  
+  .productCardImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  .productCardDiscount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff0043;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 2;
+  }
+  
+  .productCardContent {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .productCardAvailability {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .productCardAvailabilityIcon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #00c853;
+    margin-right: 6px;
+  }
+  
+  .productCardAvailabilityText {
+    font-size: 12px;
+    color: #757575;
+  }
+  
+  .productCardTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #202020;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+  }
+  
+  .productCardPriceContainer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .productCardPriceWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .productCardCurrentPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ff0043;
+  }
+  
+  .productCardOldPrice {
+    font-size: 14px;
+    color: #757575;
+    text-decoration: line-through;
+    margin-top: 2px;
+  }
+  
+  .productCardInstallment {
+    font-size: 12px;
+    color: #666;
+    background-color: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  
+  .productCardActions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .productCardActionButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .productCardActionWishlist,
+  .productCardActionCompare {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+  
+  .productCardActionCart {
+    flex-grow: 1;
+    height: 40px;
+    background-color: #ff0043;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    
+    &:hover {
+      background-color: #e6003c;
+    }
+  }
+  
+  .productCardActionIcon {
+    width: 22px;
+    height: 22px;
+    fill: #606060;
+  }
+  
+  .productCardActionText {
+    white-space: nowrap;
+  }
+  
+  .productCardSkeleton {
+    width: 100%;
+    height: 350px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #757575;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .productCardTitle {
+      font-size: 15px;
+    }
+    
+    .productCardCurrentPrice {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .productCardActions {
+      flex-wrap: wrap;
+    }
+    
+    .productCardActionWishlist,
+    .productCardActionCompare {
+      width: 36px;
+      height: 36px;
+    }
+    
+    .productCardActionCart {
+      height: 36px;
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .productCardContent {
+      padding: 12px;
+    }
+    
+    .productCardTitle {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .productCardCurrentPrice {
+      font-size: 15px;
+    }
+    
+    .productCardOldPrice {
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .productCardActions {
+      gap: 6px;
+    }
+    
+    .productCardActionIcon {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .productCardActionWishlist,
+    .productCardActionCompare {
+      width: 34px;
+      height: 34px;
+    }
+    
+    .productCardActionCart {
+      height: 34px;
+      font-size: 12px;
+    }
+  }

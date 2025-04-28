@@ -1,0 +1,415 @@
+// Variables
+$primaryColor: #3498db;
+$secondaryColor: #2c3e50;
+$accentColor: #e74c3c;
+$backgroundColor: #f5f5f5;
+$borderColor: #ddd;
+$textColor: #333;
+$lightTextColor: #777;
+$tableHeaderBg: #34495e;
+$tableRowEvenBg: #f9f9f9;
+$tableRowHoverBg: #eaf2f8;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transitionSpeed: 0.3s;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$widescreen: 1200px;
+
+// Mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin button($bgColor: $primaryColor, $textColor: white) {
+  background-color: $bgColor;
+  color: $textColor;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color $transitionSpeed ease, transform 0.2s ease;
+  
+  &:hover {
+    background-color: darken($bgColor, 10%);
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($bgColor, 0.4);
+  }
+}
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// Base styles
+.productsAdminContainer {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: $shadow;
+  font-family: Arial, sans-serif;
+  color: $textColor;
+  
+  @media (max-width: $mobile) {
+    padding: 15px 10px;
+  }
+}
+
+.loadingSpinner {
+  @include flex(column, center, center);
+  height: 200px;
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $borderColor;
+    border-top: 4px solid $primaryColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  p {
+    margin-top: 16px;
+    color: $lightTextColor;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.adminHeader {
+  @include flex(row, space-between, center);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $borderColor;
+  
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+.adminTitle {
+  font-size: 28px;
+  color: $secondaryColor;
+  font-weight: 700;
+  
+  @media (max-width: $mobile) {
+    font-size: 22px;
+  }
+}
+
+.resultsInfo {
+  color: $lightTextColor;
+  font-size: 14px;
+  padding: 6px 12px;
+  background-color: $backgroundColor;
+  border-radius: 16px;
+}
+
+.noResultsContainer {
+  @include flex(column, center, center);
+  background-color: $backgroundColor;
+  padding: 40px 20px;
+  border-radius: 8px;
+  text-align: center;
+  
+  .noResultsMessage {
+    font-size: 18px;
+    color: $lightTextColor;
+    margin-bottom: 20px;
+  }
+  
+  .clearFiltersBtn {
+    @include button;
+  }
+}
+
+// Filters
+.filtersContainer {
+  position: fixed;
+  top: 20px;
+  right: 10%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 100%;
+  max-width: 1400px;
+  @include flex(row, flex-start, flex-end);
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: $backgroundColor;
+  border-radius: 8px;
+  box-shadow: $shadow;
+
+  
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: stretch;
+    top: 10px;
+    padding: 12px;
+  }
+
+  @media (max-width: $mobile) {
+    padding: 10px;
+    gap: 12px;
+  }
+}
+
+.filterGroup {
+  @include flex(column);
+  flex: 1;
+  min-width: 180px;
+  
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+  
+  label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: $secondaryColor;
+  }
+  
+  select, input {
+    padding: 10px 12px;
+    border: 1px solid $borderColor;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color $transitionSpeed ease, box-shadow $transitionSpeed ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primaryColor;
+      box-shadow: 0 0 0 2px rgba($primaryColor, 0.2);
+    }
+    
+    &:disabled {
+      background-color: #f0f0f0;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.searchGroup {
+  flex: 2;
+  
+  .searchInputWrapper {
+    position: relative;
+    
+    input {
+      width: 100%;
+      padding-right: 36px; // Space for the clear button
+    }
+    
+    .clearSearchBtn {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: $lightTextColor;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      
+      &:hover {
+        color: $accentColor;
+      }
+    }
+  }
+}
+
+.clearFiltersBtn {
+  @include button($accentColor);
+  align-self: flex-end;
+  
+  @media (max-width: $tablet) {
+    align-self: flex-start;
+  }
+}
+
+// Table
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  box-shadow: $shadow;
+  border-radius: 8px;
+}
+
+.productsTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: $tableHeaderBg;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    
+    &:hover {
+      background-color: darken($tableHeaderBg, 5%);
+    }
+    
+    .sortIcon {
+      display: inline-block;
+      margin-left: 6px;
+      opacity: 0.4;
+      
+      &.sortActive {
+        opacity: 1;
+        color: $primaryColor;
+      }
+    }
+  }
+  
+  tr {
+    border-bottom: 1px solid $borderColor;
+    
+    &:nth-child(even) {
+      background-color: $tableRowEvenBg;
+    }
+    
+    &:hover {
+      background-color: $tableRowHoverBg;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  td {
+    vertical-align: middle;
+  }
+  
+  // Responsive table
+  @media (max-width: $tablet) {
+    thead {
+      display: none;
+    }
+    
+    tbody tr {
+      display: block;
+      margin-bottom: 16px;
+      border: 1px solid $borderColor;
+      border-radius: 8px;
+      overflow: hidden;
+      
+      &:hover {
+        box-shadow: $shadow;
+      }
+    }
+    
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      text-align: right;
+      border-bottom: 1px solid $borderColor;
+      
+      &:before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: $secondaryColor;
+        text-align: left;
+      }
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin: 0 auto;
+  
+  @media (max-width: $tablet) {
+    margin: 0;
+  }
+  
+  &:hover .imageOverlay {
+    opacity: 1;
+  }
+  
+  .productImagePreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    @include flex(row, center, center);
+    opacity: 0;
+    transition: opacity $transitionSpeed ease;
+    
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 4px 8px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      
+      &:hover {
+        background-color: $primaryColor;
+      }
+    }
+  }
+}
+
+.noImage {
+  display: inline-block;
+  font-size: 12px;
+  padding: 4px 8px;
+  background-color: $backgroundColor;
+  border-radius: 4px;
+  color: $lightTextColor;
+}

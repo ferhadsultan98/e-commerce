@@ -1,0 +1,36 @@
+.logo-slider {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f9fafb;
+  padding: 2rem 0;
+  
+  &__container {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+    transition: transform 0.5s ease;
+  }
+  
+  &__item {
+    display: inline-block;
+    margin: 0 1rem;
+    flex-shrink: 0;
+    
+    img {
+      height: 4rem;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-slider__item {
+    margin: 0 0.5rem;
+    
+    img {
+      height: 3rem;
+    }
+  }
+}

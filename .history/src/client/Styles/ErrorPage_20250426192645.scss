@@ -1,0 +1,247 @@
+// errorPage.scss
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+$primaryColor: #2563eb;
+$secondaryColor: #3b82f6;
+$backgroundColor: #f8fafc;
+$errorRed: #ef4444;
+$textDark: #1e293b;
+$textLight: #64748b;
+$borderColor: #e2e8f0;
+$white: #ffffff;
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin buttonStyle {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($primaryColor, 0.3);
+  }
+}
+
+.errorPageContainer {
+  @include flexCenter;
+  min-height: 100vh;
+  background-color: $backgroundColor;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: $textDark;
+}
+
+.errorPageContent {
+  max-width: 800px;
+  width: 100%;
+  background-color: $white;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  
+  @media (max-width: 576px) {
+    padding: 1.5rem;
+  }
+}
+
+.errorPageHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  .errorIcon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    color: $errorRed;
+    
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    @media (max-width: 576px) {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.errorTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, $primaryColor, $secondaryColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.75rem;
+  }
+}
+
+.errorPageBody {
+  margin-bottom: 2rem;
+}
+
+.errorMessage {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: $textLight;
+}
+
+.errorCode {
+  display: inline-block;
+  background-color: rgba($errorRed, 0.1);
+  color: $errorRed;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  
+  span {
+    font-weight: 400;
+    margin-right: 0.5rem;
+  }
+}
+
+.errorDetails {
+  margin-bottom: 2rem;
+  
+  p {
+    margin: 0.5rem 0;
+  }
+}
+
+.errorRedirect {
+  font-size: 1rem;
+  color: $textLight;
+  margin-top: 1rem;
+  
+  .countdownTimer {
+    background-color: $primaryColor;
+    color: $white;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+  }
+}
+
+.errorSuggestions {
+  margin-bottom: 2rem;
+  
+  h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    
+    li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: $primaryColor;
+      }
+    }
+  }
+}
+
+.errorActions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+}
+
+.primaryButton {
+  @include buttonStyle;
+  background-color: $primaryColor;
+  color: $white;
+  flex: 1;
+  
+  &:hover {
+    background-color: darken($primaryColor, 10%);
+  }
+}
+
+.secondaryButton {
+  @include buttonStyle;
+  background-color: transparent;
+  color: $primaryColor;
+  border: 1px solid $borderColor;
+  flex: 1;
+  
+  &:hover {
+    background-color: rgba($primaryColor, 0.05);
+    border-color: $primaryColor;
+  }
+}
+
+.errorPageFooter {
+  text-align: center;
+  border-top: 1px solid $borderColor;
+  padding-top: 1.5rem;
+  
+  p {
+    margin: 0;
+    color: $textLight;
+  }
+}
+
+.contactLink {
+  color: $primaryColor;
+  text-decoration: none;
+  font-weight: 600;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.errorPageContent {
+  animation: fadeIn 0.6s ease-out;
+}

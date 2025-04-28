@@ -1,0 +1,465 @@
+// Variables
+$primaryColor: #3a86ff;
+$secondaryColor: #ff006e;
+$darkColor: #202124;
+$lightColor: #f8f9fa;
+$accentColor: #4cc9f0;
+$bgColor: #f9f9fb;
+$cardShadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+$cardHoverShadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$fontFamily: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $fontFamily;
+  background-color: $bgColor;
+  color: $darkColor;
+}
+
+// Main Container
+.techStore {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  
+  .mainWrapper {
+    width: 100%;
+  }
+}
+
+// Product Grid
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Product Card - Redesigned
+.productCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: $cardShadow;
+  transition: $transition;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $cardHoverShadow;
+    
+    .productImage {
+      transform: scale(1.05);
+    }
+    
+    .productActions {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+  }
+}
+
+// Product Image Container
+.productImageContainer {
+  position: relative;
+  padding-top: 100%;
+  background: #f5f5f7;
+  overflow: hidden;
+  
+  .productImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+    padding: 20px;
+  }
+  
+  .discountBadge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: $secondaryColor;
+    color: white;
+    font-weight: 600;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    z-index: 1;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 0, 110, 0.3);
+    animation: pulsate 2s infinite;
+  }
+  
+  @keyframes pulsate {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+// Product Info
+.productInfo {
+  padding: 18px 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  .productName {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: $darkColor;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 48px;
+  }
+  
+  .productPriceContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    
+    .productPrice {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $primaryColor;
+      margin-right: 10px;
+    }
+    
+    .productOldPrice {
+      font-size: 0.9rem;
+      color: #888;
+      text-decoration: line-through;
+      position: relative;
+    }
+  }
+}
+
+// Product Actions - Now visible on hover
+.productActions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  transition: $transition;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  z-index: 2;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  
+  .flexActionButton {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    justify-content: center;
+  }
+  
+  .actionButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: $transition;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+    
+    &.cartButton, &.likeButton {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      color: white;
+    }
+    
+    &.cartButton {
+      background: $primaryColor;
+      box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+      
+      &:hover {
+        background: darken($primaryColor, 8%);
+      }
+    }
+    
+    &.likeButton {
+      background: $secondaryColor;
+      box-shadow: 0 4px 12px rgba(255, 0, 110, 0.3);
+      
+      svg {
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+      
+      &:hover svg {
+        transform: scale(1.2);
+      }
+    }
+    
+    &.featuresButton {
+      background-color: $lightColor;
+      color: $darkColor;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 500;
+      
+      &:hover {
+        background-color: darken($lightColor, 5%);
+      }
+    }
+  }
+}
+
+// Show More Container
+.showMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  
+  .showMoreButton {
+    background: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: $cardShadow;
+    color: $primaryColor;
+    transition: $transition;
+    
+    &:hover {
+   
+      box-shadow: $cardHoverShadow;
+    }
+  }
+}
+
+// Categories
+.categories {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  
+  .categoryButton {
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    
+    &.active {
+      background: $primaryColor;
+      color: white;
+      box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3);
+    }
+  }
+}
+
+// Animation for cards when they appear
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.productsGrid .productCard {
+  animation: fadeInUp 0.5s ease forwards;
+  
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      animation-delay: $i * 0.05s;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .productActions {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    position: relative;
+    background: transparent;
+    padding: 12px 16px;
+    border-top: none;
+    
+    .flexActionButton {
+      justify-content: space-between;
+    }
+    
+    .actionButton {
+      &.cartButton, &.likeButton {
+        width: 40px;
+        height: 40px;
+      }
+      
+      &.featuresButton {
+        padding: 10px;
+      }
+    }
+  }
+  
+  .productInfo {
+    padding: 16px 16px 0 16px;
+    
+    .productName {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      height: 40px;
+    }
+    
+    .productPriceContainer {
+      .productPrice {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+// Category selector with horizontal scroll
+.categorySelector {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    pointer-events: none;
+    background: linear-gradient(to right, $bgColor, transparent 5%, transparent 95%, $bgColor);
+    z-index: 1;
+  }
+  
+  .categoryScroll {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+// Loading skeleton animation
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeletonCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: $cardShadow;
+  height: 100%;
+  
+  .skeletonImage {
+    width: 100%;
+    padding-top: 100%;
+    background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+    background-size: 800px 104px;
+    animation: shimmer 1.5s infinite linear;
+  }
+  
+  .skeletonContent {
+    padding: 20px;
+    
+    .skeletonTitle {
+      height: 20px;
+      width: 80%;
+      background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+      background-size: 800px 104px;
+      animation: shimmer 1.5s infinite linear;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+    
+    .skeletonPrice {
+      height: 16px;
+      width: 60%;
+      background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+      background-size: 800px 104px;
+      animation: shimmer 1.5s infinite linear;
+      border-radius: 4px;
+    }
+  }
+}

@@ -1,0 +1,421 @@
+// Variables (same as WishList.scss for consistency)
+$primary-color: #4a6de5;
+$primary-hover: #3a5bd4;
+$secondary-color: #f8f9fa;
+$accent-color: #ff6b6b;
+$text-color: #2d3748;
+$border-color: #e2e8f0;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$border-radius: 10px;
+
+.comparePage {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1420px;
+  padding: 20px;
+  min-height: 60vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: $text-color;
+
+  // Loading state
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-size: 18px;
+    font-weight: 500;
+    color: #718096;
+  }
+
+  // Header section
+  .compareHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $border-color;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .viewToggle {
+      display: flex;
+      gap: 16px;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+
+        input[type="radio"] {
+          accent-color: $primary-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  // Category filter
+  .categoryFilter {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    select {
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: $secondary-color;
+      cursor: pointer;
+      transition: border-color 0.2s;
+
+      &:hover,
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+  }
+
+  // Empty state
+  .emptyMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #718096;
+  }
+
+  // Table container
+  .compareTableContainer {
+    overflow-x: auto;
+    border-radius: $border-radius;
+    box-shadow: $card-shadow;
+    background-color: white;
+  }
+
+  // Comparison table
+  .compareTable {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid $border-color;
+    }
+
+    .featureColumn {
+      width: 200px;
+      font-weight: 600;
+      background-color: $secondary-color;
+    }
+
+    .productColumn {
+      min-width: 250px;
+      vertical-align: top;
+
+      .productHeader {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: relative;
+      }
+
+      .discountBadge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background-color: $accent-color;
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+
+      .imageContainer {
+        position: relative;
+        padding-top: 100%;
+        background-color: $secondary-color;
+        border-radius: $border-radius;
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          padding: 16px;
+          transition: transform 0.3s;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .productName {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 45px;
+      }
+
+      .priceContainer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .currentPrice {
+          font-size: 18px;
+          font-weight: 600;
+          color: $text-color;
+        }
+
+        .oldPrice {
+          font-size: 14px;
+          text-decoration: line-through;
+          color: #a0aec0;
+        }
+      }
+
+      .addToCartButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: $primary-hover;
+        }
+
+        .cartIcon {
+          font-size: 16px;
+        }
+      }
+
+      .removeButton {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s, opacity 0.2s;
+        opacity: 0;
+
+        &:hover {
+          background-color: $accent-color;
+
+          svg {
+            color: white;
+          }
+        }
+
+        svg {
+          color: $accent-color;
+          font-size: 16px;
+          transition: color 0.2s;
+        }
+      }
+
+      &:hover {
+        .removeButton {
+          opacity: 1;
+        }
+      }
+    }
+
+    .headerRow {
+      background-color: $secondary-color;
+
+      .headerCell {
+        font-size: 16px;
+        font-weight: 600;
+        color: $text-color;
+      }
+    }
+
+    .specRow {
+      &.differentRow {
+        background-color: lighten($accent-color, 35%);
+
+        .productCell.differentCell {
+          font-weight: 500;
+          color: $text-color;
+        }
+      }
+    }
+
+    .featureCell {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .productCell {
+      font-size: 14px;
+      color: $text-color;
+    }
+  }
+
+  // Scroll indicator
+  .scrollIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #718096;
+
+    svg {
+      color: $primary-color;
+      font-size: 16px;
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .compareHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .viewToggle {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    .categoryFilter {
+      flex-direction: column;
+      align-items: flex-start;
+
+      select {
+        width: 100%;
+      }
+    }
+
+    .compareTable {
+      .featureColumn {
+        width: 150px;
+      }
+
+      .productColumn {
+        min-width: 200px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 16px;
+
+    .compareHeader {
+      h1 {
+        font-size: 18px;
+      }
+    }
+
+    .compareTable {
+      .featureColumn {
+        width: 120px;
+        font-size: 12px;
+      }
+
+      .productColumn {
+        min-width: 180px;
+
+        .productName {
+          font-size: 14px;
+          height: 40px;
+        }
+
+        .currentPrice {
+          font-size: 16px;
+        }
+
+        .oldPrice {
+          font-size: 12px;
+        }
+
+        .addToCartButton {
+          font-size: 12px;
+          padding: 8px;
+        }
+
+        .removeButton {
+          width: 28px;
+          height: 28px;
+
+          svg {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .featureCell,
+      .productCell {
+        font-size: 12px;
+        padding: 12px;
+      }
+    }
+
+    .scrollIndicator {
+      font-size: 12px;
+
+      svg {
+        font-size: 14px;
+      }
+    }
+  }
+}

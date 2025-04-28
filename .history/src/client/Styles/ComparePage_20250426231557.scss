@@ -1,0 +1,345 @@
+.comparePage {
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  
+  .compareHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    
+    .viewToggle {
+      display: flex;
+      gap: 15px;
+      
+      label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        
+        input {
+          margin-right: 5px;
+        }
+      }
+    }
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+  
+  .categoryFilter {
+    margin-bottom: 20px;
+    
+    label {
+      margin-right: 10px;
+      font-weight: 500;
+    }
+    
+    select {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      min-width: 150px;
+    }
+  }
+  
+  .emptyMessage {
+    text-align: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .compareTableContainer {
+    overflow-x: auto;
+    position: relative;
+    margin-bottom: 20px;
+    
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+      
+      &:hover {
+        background: #555;
+      }
+    }
+  }
+  
+  .compareTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    
+    .featureColumn {
+      width: 180px;
+      min-width: 180px;
+      background-color: #f9f9f9;
+    }
+    
+    .productColumn {
+      min-width: 220px;
+      padding: 0;
+      vertical-align: top;
+      border-left: 1px solid #eee;
+      
+      &:first-child {
+        border-left: none;
+      }
+    }
+    
+    .productHeader {
+      position: relative;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      
+      .discountBadge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #ff4c3b;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      
+      .imageContainer {
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        
+        img {
+          max-height: 140px;
+          max-width: 140px;
+          object-fit: contain;
+        }
+      }
+      
+      .productName {
+        font-size: 14px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        line-height: 1.3;
+        height: 40px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      
+      .priceContainer {
+        margin-bottom: 15px;
+        
+        .currentPrice {
+          font-size: 18px;
+          font-weight: bold;
+          margin-right: 8px;
+          color: #ff4c3b;
+        }
+        
+        .oldPrice {
+          text-decoration: line-through;
+          color: #999;
+          font-size: 14px;
+        }
+      }
+      
+      .addToCartButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        transition: background-color 0.2s;
+        
+        &:hover {
+          background-color: darken(#4caf50, 10%);
+        }
+        
+        .cartIcon {
+          margin-right: 5px;
+        }
+      }
+      
+      .removeButton {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #f1f1f1;
+        color: #666;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+    
+    .featureCell {
+      padding: 12px 15px;
+      background-color: #f9f9f9;
+      font-weight: 500;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      
+      &.headerCell {
+        background-color: #e9e9e9;
+        font-weight: bold;
+        color: #333;
+      }
+    }
+    
+    .productCell {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      border-left: 1px solid #eee;
+      
+      &.differentCell {
+        background-color: rgba(255, 250, 230, 0.5);
+      }
+    }
+    
+    .headerRow {
+      .headerCell {
+        padding: 10px 15px;
+      }
+    }
+    
+    .differentRow {
+      background-color: rgba(255, 250, 230, 0.2);
+    }
+  }
+  
+  .scrollIndicator {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    margin-top: 10px;
+    font-size: 14px;
+    
+    svg {
+      margin-left: 5px;
+      animation: scroll-right 1.5s infinite;
+    }
+    
+    @media (max-width: 992px) {
+      display: flex;
+    }
+  }
+}
+
+@keyframes scroll-right {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .comparePage {
+    padding: 10px;
+    
+    .compareHeader {
+      h1 {
+        font-size: 20px;
+      }
+      
+      .viewToggle {
+        font-size: 14px;
+      }
+    }
+    
+    .compareTable {
+      .featureColumn {
+        width: 140px;
+        min-width: 140px;
+      }
+      
+      .productColumn {
+        min-width: 180px;
+      }
+      
+      .productHeader {
+        .imageContainer {
+          height: 120px;
+          
+          img {
+            max-height: 100px;
+            max-width: 100px;
+          }
+        }
+        
+        .productName {
+          font-size: 13px;
+        }
+        
+        .priceContainer {
+          .currentPrice {
+            font-size: 16px;
+          }
+          
+          .oldPrice {
+            font-size: 12px;
+          }
+        }
+        
+        .addToCartButton {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+      }
+      
+      .featureCell,
+      .productCell {
+        padding: 10px;
+        font-size: 13px;
+      }
+    }
+  }
+}

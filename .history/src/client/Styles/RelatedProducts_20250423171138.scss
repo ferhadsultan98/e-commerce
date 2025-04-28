@@ -1,0 +1,28 @@
+.related-products {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  
+    .slick-slider {
+      padding: 0 10px;
+  
+      .slick-list {
+        margin: 0 -10px;
+      }
+  
+      .slick-slide {
+        padding: 0 10px;
+        outline: none;
+      }
+    }
+  }
+  
+  .related-products__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .related-products__slide {
+    padding: 0 10px;
+  }

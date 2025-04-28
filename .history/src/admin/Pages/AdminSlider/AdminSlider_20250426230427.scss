@@ -1,0 +1,299 @@
+.adminSliderContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9fafb;
+  min-height: 100vh;
+
+  .adminTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .addSlideForm,
+  .editSlideForm {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+
+    h3 {
+      font-size: 1.5rem;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      label {
+        font-size: 1rem;
+        color: #374151;
+        font-weight: 500;
+      }
+
+      .inputField,
+      .selectField {
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #1f2937;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+      }
+
+      .inputFile {
+        padding: 0.5rem 0;
+      }
+
+      .submitButton,
+      .cancelButton {
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .submitButton {
+        background-color: #3b82f6;
+        color: #ffffff;
+        border: none;
+
+        &:hover {
+          background-color: #2563eb;
+        }
+      }
+
+      .cancelButton {
+        background-color: #e5e7eb;
+        color: #1f2937;
+        border: none;
+
+        &:hover {
+          background-color: #d1d5db;
+        }
+      }
+    }
+  }
+
+  .slidesList {
+    h3 {
+      font-size: 1.5rem;
+      color: #1f2937;
+      margin: 2rem 0 1rem;
+    }
+
+    .slideItem {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+
+      .slideImages {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .imageContainer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+
+          .slideImage {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #e5e7eb;
+          }
+
+          span {
+            font-size: 0.9rem;
+            color: #374151;
+            text-align: center;
+            word-break: break-word;
+          }
+        }
+      }
+
+      .editButton,
+      .deleteButton {
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-right: 0.5rem;
+      }
+
+      .editButton {
+        background-color: #10b981;
+        color: #ffffff;
+        border: none;
+
+        &:hover {
+          background-color: #059669;
+        }
+      }
+
+      .deleteButton {
+        background-color: #ef4444;
+        color: #ffffff;
+        border: none;
+
+        &:hover {
+          background-color: #dc2626;
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .adminSliderContainer {
+    padding: 15px;
+
+    .adminTitle {
+      font-size: 1.75rem;
+    }
+
+    .addSlideForm,
+    .editSlideForm {
+      padding: 1rem;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      form {
+        .inputField,
+        .selectField {
+          font-size: 0.9rem;
+          padding: 0.6rem;
+        }
+
+        .submitButton,
+        .cancelButton {
+          padding: 0.6rem 1.2rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .slidesList {
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      .slideItem {
+        padding: 1rem;
+
+        .slideImages {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+
+          .imageContainer {
+            .slideImage {
+              max-width: 100%;
+              height: 120px;
+            }
+
+            span {
+              font-size: 0.85rem;
+            }
+          }
+        }
+
+        .editButton,
+        .deleteButton {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .adminSliderContainer {
+    padding: 10px;
+
+    .adminTitle {
+      font-size: 1.5rem;
+    }
+
+    .addSlideForm,
+    .editSlideForm {
+      padding: 0.75rem;
+
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      form {
+        .inputField,
+        .selectField {
+          font-size: 0.85rem;
+          padding: 0.5rem;
+        }
+
+        .submitButton,
+        .cancelButton {
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    .slidesList {
+      h3 {
+        font-size: 1.1rem;
+      }
+
+      .slideItem {
+        padding: 0.75rem;
+
+        .slideImages {
+          gap: 0.5rem;
+
+          .imageContainer {
+            .slideImage {
+              height: 100px;
+            }
+
+            span {
+              font-size: 0.8rem;
+            }
+          }
+        }
+
+        .editButton,
+        .deleteButton {
+          padding: 0.3rem 0.6rem;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

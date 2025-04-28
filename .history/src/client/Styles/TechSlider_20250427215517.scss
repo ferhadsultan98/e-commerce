@@ -1,0 +1,96 @@
+.techLogoSlider {
+  padding: 20px 5px;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  width: 100%;
+
+  .techLogoSliderContainer {
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 0 auto;
+
+    border: 1px solid rgba(165, 165, 165, 0.853);
+  }
+
+  .techLogoSliderTrack {
+    overflow: hidden;
+  }
+
+  .techLogoSliderLogos {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .techLogoSliderLogoItem {
+    flex: 0 0 25%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+   
+    background-color: #f5f7fa;
+
+    .techLogoSliderLogo {
+      filter: brightness(1.1);
+    }
+  }
+
+  .techLogoSliderLogo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: filter 0.3s ease;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 992px) {
+    .techLogoSlider {
+      padding: 60px 15px;
+    }
+
+    .techLogoSliderLogoItem {
+      flex: 0 0 33.33%;
+    }
+
+    .techLogoSliderLogo {
+      width: 120px;
+      height: 60px;
+    }
+
+    .techLogoSliderLogoName {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .techLogoSlider {
+      padding: 40px 10px;
+    }
+
+    .techLogoSliderLogoItem {
+      flex: 0 0 50%;
+    }
+
+    .techLogoSliderLogo {
+      width: 100px;
+      height: 50px;
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .techLogoSliderLogoItem {
+    flex: 0 0 100%;
+  }
+
+  .techLogoSliderLogo {
+    width: 80px;
+    height: 40px;
+  }
+
+  .techLogoSliderLogoName {
+    font-size: 14px;
+  }
+}
